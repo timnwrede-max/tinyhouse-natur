@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tiny House Allgäu – Natürlich Entspannen</title>
+  <style>
+    :root {
+      --accent: #4c6653;
+      --light-bg: #f9f8f5;
+      --text: #2e2e2e;
+      --white: #fff;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      margin: 0;
+      background-color: var(--light-bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: url('https://www.hewi.com/Tiny%20House/4245/image-thumb__4245__full-16-9/TH21-061_KJ_5881.webp') no-repeat center/cover;
+      color: white;
+      text-align: center;
+      padding: 10rem 2rem 8rem;
+      position: relative;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+    }
+
+    header h1, header p {
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    section {
+      max-width: 1000px;
+      margin: 4rem auto;
+      padding: 0 1.5rem;
+    }
+
+    h2 {
+      text-align: center;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .about p {
+      max-width: 800px;
+      margin: 0 auto 1rem;
+      color: #444;
+      text-align: center;
+    }
+
+    .activities {
+      text-align: center;
+    }
+
+    .activity-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .activity {
+      background: var(--white);
+      border-radius: 0.8rem;
+      padding: 1.5rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .activity h3 {
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .packages {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .package {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 0.8rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+
+    .package:hover {
+      transform: translateY(-5px);
+    }
+
+    .package h3 {
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .package ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 1.5rem;
+    }
+
+    .package li {
+      margin: 0.4rem 0;
+      font-size: 0.95rem;
+    }
+
+    .price {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    /* FAQ */
+    .faq {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: var(--white);
+      border-radius: 0.6rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      margin: 1rem 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .faq-item summary {
+      font-weight: 600;
+      padding: 1rem 1.5rem;
+      cursor: pointer;
+      color: var(--accent);
+      position: relative;
+    }
+
+    .faq-item summary::marker {
+      color: var(--accent);
+    }
+
+    .faq-item p {
+      padding: 0 1.5rem 1rem;
+      color: #444;
+    }
+
+    .faq-item[open] {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    /* Kontaktformular */
+    .contact {
+      text-align: center;
+    }
+
+    .contact p {
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 0.8rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      margin-bottom: 0.3rem;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 0.4rem;
+      font-family: inherit;
+    }
+
+    button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.6rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #3a4f40;
+    }
+
+    /* Social Buttons */
+    .social-buttons {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .social-buttons a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent);
+      color: white;
+      padding: 0.8rem 1.4rem;
+      border-radius: 2rem;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.3s ease;
+    }
+
+    .social-buttons a:hover {
+      background: #3a4f40;
+    }
+
+    .social-buttons img {
+      width: 20px;
+      height: 20px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+      padding: 2rem 1rem;
+      border-top: 1px solid #ddd;
+      background: #fff;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.3rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Tiny House Allgäu</h1>
+    <p>Erholung, Natur & familiäre Gastfreundschaft – Willkommen in unserem Familienbetrieb.</p>
+  </header>
+
+  <section class="about">
+    <h2>Über uns</h2>
+    <p>Wir sind ein liebevoll geführter Familienbetrieb aus dem Herzen des Allgäus. Unser Ziel ist es, Ihnen eine Auszeit zu ermöglichen – umgeben von Natur, Ruhe und echter Herzlichkeit.</p>
+    <p>Unsere Tiny Houses stehen für Nachhaltigkeit, Komfort und einen bewussten Umgang mit unserer Umgebung. Hier zählt das Wesentliche: Zeit für sich, für Familie und die kleinen Dinge im Leben.</p>
+  </section>
+
+  <section class="activities">
+    <h2>Was Sie bei uns erleben können</h2>
+    <p>Die Umgebung rund um unser Tiny House bietet zahlreiche Möglichkeiten, den Tag aktiv oder entspannt zu gestalten.</p>
+    <div class="activity-grid">
+      <div class="activity">
+        <h3>Wandern & Natur</h3>
+        <p>Direkt vor der Tür beginnen wunderschöne Wanderwege mit Panoramablick über das Allgäu.</p>
+      </div>
+      <div class="activity">
+        <h3>Wellness & Spa</h3>
+        <p>Unser privater Spa-Bereich mit Sauna und Ruhezone lädt zum Abschalten und Genießen ein.</p>
+      </div>
+      <div class="activity">
+        <h3>Familienzeit</h3>
+        <p>Ob Spielwiese, Grillplatz oder Lagerfeuer – Kinder und Erwachsene finden hier ihren Lieblingsplatz.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Unsere Pakete</h2>
+    <div class="packages">
+      <div class="package">
+        <h3>Basic</h3>
+        <p class="price">ab 80€ / Nacht</p>
+        <ul>
+          <li>2 Personen</li>
+          <li>Gemütliches Tiny House mit Küche</li>
+          <li>Frühstückskorb mit regionalen Produkten</li>
+          <li>Kostenloses WLAN & Parkplatz</li>
+        </ul>
+      </div>
+
+      <div class="package">
+        <h3>Premium</h3>
+        <p class="price">ab 100€ / Nacht</p>
+        <ul>
+          <li>Bis zu 4 Personen</li>
+          <li>Privater Zugang zum Spa-Bereich</li>
+          <li>Kinderfreundliche Ausstattung</li>
+          <li>Begrüßungsdrink & Terrasse</li>
+        </ul>
+      </div>
+
+      <div class="package">
+        <h3>Luxus</h3>
+        <p class="price">ab 130€ / Nacht</p>
+        <ul>
+          <li>Exklusives Tiny House Deluxe</li>
+          <li>Privater Spa & Sauna</li>
+          <li>Frühstück & Abendessen inklusive</li>
+          <li>Panoramablick & Gartenbereich</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Häufige Fragen</h2>
+    <div class="faq">
+      <details class="faq-item">
+        <summary>Kann man mit Kindern anreisen?</summary>
+        <p>Ja! Familien mit Kindern sind herzlich willkommen. Wir bieten kindgerechte Ausstattung und genügend Platz zum Spielen.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Wie funktioniert der Check-in?</summary>
+        <p>Der Check-in ist flexibel. Sie können kontaktlos anreisen oder wir begrüßen Sie persönlich. Die Details stimmen wir individuell ab.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Ist der Spa-Bereich im Preis enthalten?</summary>
+        <p>Im Premium- und Luxuspaket inklusive, im Basic-Paket auf Wunsch zubuchbar.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="contact">
+    <h2>Kontakt</h2>
+    <p>Sie möchten buchen oder haben Fragen? Schreiben Sie uns – wir freuen uns auf Ihre Nachricht!</p>
+
+    <form>
+      <label for="name">Name</label>
+      <input type="text" id="name" placeholder="Ihr Name" required>
+
+      <label for="email">E-Mail</label>
+      <input type="email" id="email" placeholder="Ihre E-Mail-Adresse" required>
+
+      <label for="message">Nachricht</label>
+      <textarea id="message" rows="4" placeholder="Ihre Nachricht an uns..." required></textarea>
+
+      <button type="submit">Nachricht senden</button>
+    </form>
+
+    <div class="social-buttons">
+      <a href="https://www.instagram.com/deinprofil" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+        Instagram
+      </a>
+      <a href="https://wa.me/491234567890" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+        WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Tiny House Allgäu – Alle Rechte vorbehalten.
+  </footer>
+
+  <!-- Chatbase Chatbot Script -->
+  <script>
+  (function(){
+    if(!window.chatbase || window.chatbase("getState")!=="initialized"){
+      window.chatbase=(...arguments)=>{
+        if(!window.chatbase.q){window.chatbase.q=[]}
+        window.chatbase.q.push(arguments)
+      };
+      window.chatbase=new Proxy(window.chatbase,{
+        get(target,prop){
+          if(prop==="q"){return target.q}
+          return(...args)=>target(prop,...args)
+        }
+      })
+    }
+    const onLoad=function(){
+      const script=document.createElement("script");
+      script.src="https://www.chatbase.co/embed.min.js";
+      script.id="DlExbmFxSEYb-cAJWr3C8";
+      script.domain="www.chatbase.co";
+      document.body.appendChild(script)
+    };
+    if(document.readyState==="complete"){onLoad()}
+    else{window.addEventListener("load",onLoad)}
+  })();
+  </script>
+
+</body>
+</html>
